@@ -1,6 +1,7 @@
 const express  = require('express');
 const app = express();
 const path = require('path');
+const ejs = require('ejs');
 const bodyParser = require('body-parser');
 
 //middleware
@@ -11,23 +12,9 @@ app.use(express.static("public"));
 
 
 app.get("/" , (req , res) => {
-    res.sendFile(path.join(__dirname , "index.html"));
+    //res.render 解讀ejs檔案 ， 且ejs檔案需放置views資料夾下
+    res.render("index.ejs")
 });
-
-app.get("/Alex" , (req , res) => {
-    res.send("Alex Page");
-});
-
-app.get("/Rock" , (req , res) => {
-    res.status(302);
-    res.sendFile(path.join(__dirname , "moved.html"));
-});
-
-app.post("/formHandling" , (req , res) => {
-    let {fullname , age} = req.body;
-    console.log(req.body);
-    res.send(`Thanks for handling! Name : ${fullname} , Age : ${age}`);
-})
 
 app.get("*" , (req , res) => {
     res.status(404);
