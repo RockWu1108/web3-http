@@ -16,6 +16,11 @@ app.get("/" , (req , res) => {
     res.render("index.ejs")
 });
 
+app.get("/:name" , (req , res)=>{
+    let {name} = req.params;
+    res.render("person.ejs" , { name}) // 第二個物件參數將值傳至ejs模板中使用
+})
+
 app.get("*" , (req , res) => {
     res.status(404);
     res.sendFile(path.join(__dirname ,"error.html"));
