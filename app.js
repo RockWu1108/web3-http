@@ -17,20 +17,33 @@ mongoose.connect("mongodb://localhost:27017/mydatabase",
 
 //添加資料到mongoDB
 const EP1 = new Employee({
-    name : "Rock",
-    age : 26,
-    major : "AA",
+    name : "Alex",
+    age : 25,
+    major : "BB",
     scholarShip :{
-        merit : 1000,
-        other : 3000
+        merit : 2000,
+        other : 4000
     }
 });
 
-EP1.save().then(()=>{
-    console.log("Save Success");
-}).catch((err)=>{
-    console.log("Save Failed");
+//找出mongoDb所有符合資料
+Employee.find().then((data) =>{
+    console.log(data);
 })
+
+//找出mongoDb符合的其中一筆資料
+Employee.findOne({name : "Alex"}).then((data) =>{
+    console.log(data);
+})
+
+
+// EP1.save().then(()=>{
+//   console.log("Save Success");
+// }).catch((err)=>{
+//    console.log("Save Failed");
+// })
+
+
 
 //middleware
 //使用app.post(...)時須添加
