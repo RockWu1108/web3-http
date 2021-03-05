@@ -4,7 +4,7 @@ const path = require('path');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+const Employee = require('./models/employee');
 //connect to mongoose 
 
 mongoose.connect("mongodb://localhost:27017/mydatabase",
@@ -15,6 +15,22 @@ mongoose.connect("mongodb://localhost:27017/mydatabase",
     console.log("Connect Failed." , err);
 })
 
+//添加資料到mongoDB
+const EP1 = new Employee({
+    name : "Rock",
+    age : 26,
+    major : "AA",
+    scholarShip :{
+        merit : 1000,
+        other : 3000
+    }
+});
+
+EP1.save().then(()=>{
+    console.log("Save Success");
+}).catch((err)=>{
+    console.log("Save Failed");
+})
 
 //middleware
 //使用app.post(...)時須添加
