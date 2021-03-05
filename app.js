@@ -26,6 +26,10 @@ const EP1 = new Employee({
     }
 });
 
+Employee.deleteOne({"scholarShip.merit":{$gte : 9000}}).then((msg) =>{
+    console.log(msg);
+})
+
 // //修改mongoDB符合條件中的一筆資料
 // Employee.updateOne({name : "Rock"} , {age : 30}).then(() =>{
 //     console.log("Udpate Success!!!");
@@ -33,14 +37,14 @@ const EP1 = new Employee({
 //     console.log("Update error!!!");
 // })
 
-//查詢並同時修改條件資料
-Employee.findOneAndUpdate({name : "Rock"} , {
-    scholarShip :{
-    merit : 100000,
-    other : 400000
-}},{new:true}).then((msg)=>{
-    console.log(msg);
-})
+// //查詢並同時修改條件資料
+// Employee.findOneAndUpdate({name : "Rock"} , {
+//     scholarShip :{
+//     merit : 100000,
+//     other : 400000
+// }},{new:true}).then((msg)=>{
+//     console.log(msg);
+// })
 
 
 // //找出mongoDb所有符合資料(return array)
