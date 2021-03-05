@@ -26,16 +26,32 @@ const EP1 = new Employee({
     }
 });
 
-//找出mongoDb所有符合資料
-Employee.find().then((data) =>{
-    console.log(data);
+// //修改mongoDB符合條件中的一筆資料
+// Employee.updateOne({name : "Rock"} , {age : 30}).then(() =>{
+//     console.log("Udpate Success!!!");
+// }).catch((err) =>{
+//     console.log("Update error!!!");
+// })
+
+//查詢並同時修改條件資料
+Employee.findOneAndUpdate({name : "Rock"} , {
+    scholarShip :{
+    merit : 100000,
+    other : 400000
+}},{new:true}).then((msg)=>{
+    console.log(msg);
 })
 
-//找出mongoDb符合的其中一筆資料
-Employee.findOne({name : "Alex"}).then((data) =>{
-    console.log(data);
-})
 
+// //找出mongoDb所有符合資料(return array)
+// Employee.find().then((data) =>{
+//     console.log(data);
+// })
+
+// //找出mongoDb符合的其中一筆資料(return object)
+// Employee.findOne({name : "Alex"}).then((data) =>{
+//     console.log(data);
+// })
 
 // EP1.save().then(()=>{
 //   console.log("Save Success");
