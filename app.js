@@ -3,6 +3,18 @@ const app = express();
 const path = require('path');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+//connect to mongoose 
+
+mongoose.connect("mongodb://localhost:27017/mydatabase",
+{useNewUrlParser:true , useUnifiedTopology:true})
+.then(() =>{
+    console.log("Connect Success !!!!");
+}).catch((err) =>{
+    console.log("Connect Failed." , err);
+})
+
 
 //middleware
 //使用app.post(...)時須添加
