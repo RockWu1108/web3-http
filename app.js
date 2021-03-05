@@ -17,18 +17,16 @@ mongoose.connect("mongodb://localhost:27017/mydatabase",
 
 //添加資料到mongoDB
 const EP1 = new Employee({
-    name : "Alex",
-    age : 25,
-    major : "BB",
+    name : "Amy",
+    age : 26,
     scholarShip :{
-        merit : 2000,
-        other : 4000
+        merit : 4000
     }
 });
-
-Employee.deleteOne({"scholarShip.merit":{$gte : 9000}}).then((msg) =>{
-    console.log(msg);
-})
+// //delete scholarShip.merit >=9000的一筆資料
+// Employee.deleteOne({"scholarShip.merit":{$gte : 9000}}).then((msg) =>{
+//     console.log(msg);
+// })
 
 // //修改mongoDB符合條件中的一筆資料
 // Employee.updateOne({name : "Rock"} , {age : 30}).then(() =>{
@@ -57,11 +55,11 @@ Employee.deleteOne({"scholarShip.merit":{$gte : 9000}}).then((msg) =>{
 //     console.log(data);
 // })
 
-// EP1.save().then(()=>{
-//   console.log("Save Success");
-// }).catch((err)=>{
-//    console.log("Save Failed");
-// })
+EP1.save().then(()=>{
+  console.log("Save Success");
+}).catch((err)=>{
+   console.log("Save Failed");
+})
 
 
 

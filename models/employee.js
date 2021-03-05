@@ -1,12 +1,28 @@
 const mongoose = require('mongoose');
 
 const employee = new mongoose.Schema({
-    name : String , 
-    age : Number ,
-    major : String , 
+    name : {
+        type: String,
+        required: true,
+    } , 
+    age : {
+        type : Number,
+        required: true,
+        default : 18
+    },
+    major : {
+        type : String , 
+        default : "AA",
+    },
     scholarShip:{
-        merit :Number ,
-        other : Number
+        merit :{
+            type :Number ,
+            default : 0,
+        },
+        other : {
+            type : Number ,
+            default : 0,
+        }
     }
 });
 
