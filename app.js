@@ -24,6 +24,16 @@ const EP1 = new Employee({
         merit : 4000
     }
 });
+
+
+
+ // 使用schema中定義的function()
+Employee.findOne({name :"Amy"}).then((data)=>{
+    let result = data.totalScholarShip();
+    console.log(result);
+}).catch((err)=>{
+    console.log(err);
+})
 // //delete scholarShip.merit >=9000的一筆資料
 // Employee.deleteOne({"scholarShip.merit":{$gte : 9000}}).then((msg) =>{
 //     console.log(msg);
@@ -54,13 +64,13 @@ const EP1 = new Employee({
 // //找出mongoDb符合的其中一筆資料(return object)
 // Employee.findOne({name : "Alex"}).then((data) =>{
 //     console.log(data);
-// })
+// // })
 
-EP1.save().then(()=>{
-  console.log("Save Success");
-}).catch((err)=>{
-   console.log(err);
-})
+// EP1.save().then(()=>{
+//   console.log("Save Success");
+// }).catch((err)=>{
+//    console.log();
+// })
 
 
 

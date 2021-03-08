@@ -14,7 +14,7 @@ const employee = new mongoose.Schema({
     major : {
         type : String , 
         default : "AA",
-        enum : [ "Chinese" , "Math" , "Science" , "Law"]
+        enum : [ "Chinese" , "Math" , "Science" , "Law" , "AA"]
     },
     scholarShip:{
         merit :{
@@ -27,5 +27,9 @@ const employee = new mongoose.Schema({
         }
     }
 });
+
+employee.methods.totalScholarShip = function(){
+    return this.scholarShip.merit + this.scholarShip.other;
+}
 
 module.exports = mongoose.model("Employee" , employee);
