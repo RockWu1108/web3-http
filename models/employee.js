@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const employee = new mongoose.Schema({
     name : {
         type: String,
-        required: true,
+        required: [true , "You forget to enter the name"],
+        maxLength:[15 , "name is too long"]
     } , 
     age : {
         type : Number,
@@ -13,6 +14,7 @@ const employee = new mongoose.Schema({
     major : {
         type : String , 
         default : "AA",
+        enum : [ "Chinese" , "Math" , "Science" , "Law"]
     },
     scholarShip:{
         merit :{

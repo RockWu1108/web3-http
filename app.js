@@ -19,6 +19,7 @@ mongoose.connect("mongodb://localhost:27017/mydatabase",
 const EP1 = new Employee({
     name : "Amy",
     age : 26,
+    major : "AAA",
     scholarShip :{
         merit : 4000
     }
@@ -58,7 +59,7 @@ const EP1 = new Employee({
 EP1.save().then(()=>{
   console.log("Save Success");
 }).catch((err)=>{
-   console.log("Save Failed");
+   console.log(err);
 })
 
 
