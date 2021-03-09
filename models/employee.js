@@ -28,8 +28,15 @@ const employee = new mongoose.Schema({
     }
 });
 
+// instance methods
 employee.methods.totalScholarShip = function(){
     return this.scholarShip.merit + this.scholarShip.other;
+}
+
+// static methods
+
+employee.statics.setOtherToZero = function(){
+    return this.updateMany({},{"scholarShip.other":0});
 }
 
 module.exports = mongoose.model("Employee" , employee);

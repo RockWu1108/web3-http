@@ -17,23 +17,33 @@ mongoose.connect("mongodb://localhost:27017/mydatabase",
 
 //添加資料到mongoDB
 const EP1 = new Employee({
-    name : "Amy",
+    name : "rock",
     age : 26,
-    major : "AAA",
+    major : "Chinese",
     scholarShip :{
-        merit : 4000
+        merit : 4000,
+        other : 799
     }
 });
 
-
-
- // 使用schema中定義的function()
-Employee.findOne({name :"Amy"}).then((data)=>{
-    let result = data.totalScholarShip();
-    console.log(result);
-}).catch((err)=>{
-    console.log(err);
+//使用 setOtherToZero static methods
+Employee.setOtherToZero().then((msg) =>{
+    console.log(msg)
+}).catch((err) =>{
+    console.log(err)
 })
+
+Employee.find({}).then((data)=>{
+    console.log(data);
+})
+
+//  // 使用schema中定義的function()
+// Employee.findOne({name :"Amy"}).then((data)=>{
+//     let result = data.totalScholarShip();
+//     console.log(result);
+// }).catch((err)=>{
+//     console.log(err);
+// })
 // //delete scholarShip.merit >=9000的一筆資料
 // Employee.deleteOne({"scholarShip.merit":{$gte : 9000}}).then((msg) =>{
 //     console.log(msg);
@@ -69,7 +79,7 @@ Employee.findOne({name :"Amy"}).then((data)=>{
 // EP1.save().then(()=>{
 //   console.log("Save Success");
 // }).catch((err)=>{
-//    console.log();
+//    console.log(err);
 // })
 
 
